@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <style>
+        body {
+            margin: 0px;
+        }
+	#sequence {
+            border-top: solid 10px white;
+        }
+        #top-half {
+            position: fixed;
+            background-color: #fff;
+            z-index: 1;
+            border-bottom: double 5px white;
+            width: 100%;
+        }
+        #chart {
+            float: left;
+            position: relative;
+            padding-right: 20px;
+            margin: auto;
+            width: auto;
+            border-bottom: 1px black solid;
+        }
+
+        #centerframe {
+            position: absolute;
+            text-align: center;
+            color: #555;
+            z-index: -1;
+        }
+
+        #centerframe img {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            z-index: 2;
+        }
+
+        #centertext {
+            position: absolute;
+            text-align: center;
+            top: -5%;
+            left: 47%;
+            font-size: 2em;
+            transform: translateX(-50%);
+        }
+
+        path {
+            stroke: #fff;
+            fill-rule: evenodd;
+        }
+
+        text {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+        #tables {
+            position: absolute;
+            z-index: -1;
+            width: 500px; 
+            padding-bottom: 10px;
+            text-align: center;
+			font-family: Georgia;
+			font-size: 15px;
+        }
+        #tables table {
+            float: left;
+            border: solid 2px white;
+            border-collapse: collapse;
+        }
+        #tables table td, #tables table th {
+            border: solid thin white;
+            padding: 3px 7px 3px 7px;
+        }
+		#fruit {
+			width: 155px;
+		}
+		#vegetables {
+			width: 190px;
+		}
+		#others {
+			width: 155px;
+		}
+        #fruit td, #fruit th {
+            background-color: #ff7364;
+        }
+        #vegetables td,#vegetables th {
+            background-color: #51d88c;
+        }
+        #others td,#others th {
+            background-color: #e28f45;
+        }
+        .centered {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .loader {
+            text-align: center;
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #737373;
+            border-radius: 50%;
+            width: 60%;
+            height: 60%;
+            margin: 10% 10% 10% 10%;
+            animation: spin 2s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<div id="top-half">
+    <div id="sequence"></div>
+    <div id="chart" class="centered">
+        <svg></svg>
+        <div id="centerframe" style="background: #fff;">
+            <div class="loader"></div>
+            <img id="preview" src="" style="width: 100%; border-radius: 50%" align="middle"/>
+        </div>
+        <div id="centertext"></div>
+    </div>
+</div>
+<div id="tables" class="centered">
+    <table id="fruit">
+        <thead>
+        <tr><th>Culinary Fruit</th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <table id="vegetables">
+        <thead>
+        <tr><th>Culinary Vegetables</th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <table id="others">
+        <thead>
+        <tr><th>Culinary Other</th></tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<!-- jQuery -->
+<script src="/js/jquery.js"></script>
+
+</body>
+<script>
+// Load hierarchical data from json file
+var nodeData;
+$.ajax({
+    dataType: "json",
+    url: "/rsc/4/produce.json",
+    async: false,
+    success: function(data) {
+        nodeData = data;
+    }
+});
+
+// Variables
+var width = 500;
+var height = 500;
+var radius = Math.min(width, height) / 2;
+var color = d3.scaleOrdinal(d3.schemeCategory20b);
+var sequenceheight = 50;
+
+// Breadcrumb dimensions: width, height, spacing, width of tip/tail.
+var b = {
+    w: 130, h: 30, s: 3, t: 10
+};
+
+// Create primary <g> element
+var g = d3.select('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')')
+    .on("mouseleave", mouseleave);
+
+// Data strucure
+var partition = d3.partition()
+    .size([2 * Math.PI, radius * radius]);
+
+// Find data root
+var root = d3.hierarchy(nodeData)
+    .sum(function (d) { return d.children ? d.value : 1});
+
+// Size arcs
+partition(root);
+var arc = d3.arc()
+    .startAngle(function (d) { return d.x0 })
+    .endAngle(function (d) { return d.x1 })
+    .innerRadius(function (d) { return Math.sqrt(d.y0) })
+    .outerRadius(function (d) { return Math.sqrt(d.y1) });
+
+root.eachBefore(function(d){
+    if (!(d.data.color)) d.data.color = d.ancestors()[1].data.color;
+});
+
+// Pin the table below the sunburst
+d3.select("#tables").style("top", (sequenceheight + height + 25) + "px");
+
+// Center the image of produce in the middle of the sunburst
+d3.select("#centerframe")
+    .style("width", (0.74 * radius) + "px")
+    .style("height", (0.74 * radius) + "px")
+    .style("top", (0.63 * radius) + "px")
+    .style("left", (0.63 * radius) + "px")
+
+// Display image of produce in center circle
+d3.select("#preview")
+    .attr("src", "/rsc/4/Produce.jpg");
+
+// Put it all together
+var paths = g.selectAll('path')
+    .data(root.descendants())
+    .enter().append('path')
+    .attr("display", function (d) { return d.depth ? null : "none"; })
+    .attr("d", arc)
+    .style('stroke', '#fff')
+    .style("fill", function(d) {return d.data.color})
+    .text(function(d) { return d.data.name})
+    .on("mouseover", mouseover);
+
+paths.append("text")
+    .attr("dx", 12)
+    .attr("dy", ".35em")
+    .text(function(d) { return d.data.name });
+
+// Add breadcrumb trail above chart
+var trail = d3.select("#sequence").append("svg:svg")
+    .attr("width", "100%")
+    .attr("height", sequenceheight)
+    .attr("id", "trail");
+
+d3.select("#fruit").select("tbody")
+    .selectAll("tr")
+    .data(root.leaves().filter(function(node) { return node.data.culinary == "fruit"; })
+        .sort(function(a,b) {
+            if (a.data.name > b.data.name) return 1;
+            else if (b.data.name > a.data.name) return -1;
+            else return 0;
+        }))
+    .enter().append("tr")
+    .attr("id", "elemrow")
+    .html(function(node) { return "\n<td>" + node.data.name + "</td>\n" ;})
+    .on("mouseover", mouseover);
+d3.select("#vegetables").select("tbody")
+    .selectAll("tr")
+    .data(root.leaves().filter(function(node) { return node.data.culinary == "vegetable"; })
+        .sort(function(a,b) {
+            if (a.data.name > b.data.name) return 1;
+            else if (b.data.name > a.data.name) return -1;
+            else return 0;
+        }))
+    .enter().append("tr")
+    .attr("id", "elemrow")
+    .html(function(node) { return "\n<td>" + node.data.name + "</td>\n" ;})
+    .on("mouseover", mouseover)
+    .on("mouseover", mouseover);
+d3.select("#others").select("tbody")
+    .selectAll("tr")
+    .data(root.leaves().filter(function(node) { return node.data.culinary == "other"; })
+        .sort(function(a,b) {
+            if (a.data.name > b.data.name) return 1;
+            else if (b.data.name > a.data.name) return -1;
+            else return 0;
+        }))
+    .enter().append("tr")
+    .attr("id", "elemrow")
+    .html(function(node) { return "\n<td>" + node.data.name + "</td>\n" ;})
+    .on("mouseover", mouseover)
+    .on("mouseover", mouseover);
+
+// Perform cleanup function when mouse leaves tables
+d3.select("#tables").on("mouseleave", mouseleave);
+
+// Action when you over over a segment
+function mouseover(d) {
+
+    // Blank the img so the background loading icon shows
+    d3.select("#preview")
+        .attr("src", "");
+
+    // Display image of produce in center circle
+    d3.select("#preview")
+        .attr("src", "/rsc/4/" + d.data.name + ".jpg");
+
+    // All other elements fade out,
+    d3.selectAll("path")
+        .style("opacity", 0.3);
+
+    // except the category hovered over and its parents
+    d3.selectAll("path")
+        .filter(function(node) {
+            return d.ancestors().indexOf(node) >= 0;
+        })
+        .style("opacity", 1);
+
+    // Display text in center
+    d3.select("#centertext")
+        .text(d.data.name);
+
+    // Update hierarchical sequence above chart
+    updateBreadcrumbs(d.ancestors().reverse());
+
+    // Set all table rows to low opacity
+    d3.select("#tables")
+        .selectAll("#elemrow")
+        .style("opacity", 0.3);
+
+    // except the one selected
+    d3.select("#tables").selectAll("#elemrow")
+        .filter(function(node) {
+            return node.data.name == d.data.name;
+        })
+        .style("opacity", 1);
+}
+
+// Action when the mouse leaves the diagram
+function mouseleave(d) {
+    // Return everything to normal opacity
+    d3.selectAll("path")
+        .style("opacity", 1);
+    d3.select("#tables")
+        .selectAll("tr")
+        .style("opacity", 1);
+
+    // Display image of produce in center circle and erase text
+    d3.select("#preview")
+        .attr("src", "/rsc/4/Produce.jpg");
+    d3.select("#centertext")
+        .text("");
+
+    // Hide the breadcrumb trail
+    d3.select("#trail")
+        .style("visibility", "hidden");
+}
+
+// Generate a string that describes the points of a breadcrumb polygon.
+function breadcrumbPoints(d, i) {
+    var points = [];
+    points.push("0,0");
+    points.push(b.w + ",0");
+    points.push(b.w + b.t + "," + (b.h / 2));
+    points.push(b.w + "," + b.h);
+    points.push("0," + b.h);
+    points.push(b.t + "," + (b.h / 2));
+    return points.join(" ");
+}
+
+// Update the breadcrumb trail to show the current sequence and percentage.
+function updateBreadcrumbs(nodeArray) {
+    nodeArray.shift();
+
+    // Data join; key function combines name and depth (= position in sequence).
+    var trail = d3.select("#trail")
+        .selectAll("g")
+        .data(nodeArray, function(d) { return d.data.name; });
+
+    // Remove exiting nodes.
+    trail.exit().remove();
+
+    // Add breadcrumb and label for entering nodes.
+    var entering = trail.enter().append("g");
+
+    entering.append("polygon")
+        .attr("points", breadcrumbPoints)
+        .style("fill", function(d) { return d.data.color; });
+
+    entering.append("text")
+        .attr("x", (b.w + b.t) / 2)
+        .attr("y", b.h / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "middle")
+        .text(function(d) { return d.data.name; })
+        .attr("fill", "#fff");
+
+    // Merge enter and update selections; set position for all nodes.
+    entering.merge(trail).attr("transform", function(d, i) {
+        return "translate(" + i * (b.w + b.s) + ", 0)";
+    });
+
+    // Now move and update the percentage at the end.
+    d3.select("#trail").select("#endlabel")
+        .attr("x", (nodeArray.length + 0.5) * (b.w + b.s))
+        .attr("y", b.h / 2)
+        .attr("dy", "0.35em")
+        .attr("text-anchor", "middle");
+
+
+    // Hide the breadcrumb trail
+    d3.select("#trail")
+        .style("visibility", "visible");
+
+}
+
+function computeTextRotation(d) {
+    return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
+}
+</script>
+</html>
+

@@ -1,0 +1,692 @@
+{
+  "name": "Produce",
+  "color": "#fff",
+  "children": [
+    {
+      "name": "Fruit",
+      "color": "#e74c3c",
+      "children": [
+        {
+          "name": "Aggregate Fruits",
+          "color": "#bf3277",
+          "children": [
+            {
+              "name": "Boysenberry",
+              "culinary": "fruit"
+            },
+            {
+              "name": "Blackberry",
+              "culinary": "fruit"
+            },
+            {
+              "name": "Raspberry",
+              "culinary": "fruit"
+            },
+            {
+              "name": "Strawberry",
+              "culinary": "fruit"
+            }
+          ]
+        },
+        {
+          "name": "Simple Fruits",
+          "color": "#a01507",
+          "children": [
+            {
+              "name": "Dry Fruits",
+              "color": "#a05207",
+              "children": [
+                {
+                  "name": "Dehiscent Dry Fruits",
+                  "color": "#c12b1b",
+                  "children": [
+                    {
+                      "name": "Capsules",
+                      "color": "#d1741f",
+                      "children": [
+                        {
+                          "name": "Brazil Nut",
+                          "culinary": "other"
+                        },
+                        {
+                          "name": "Opium",
+                          "culinary": "other"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Legumes",
+                      "color": "#f9786b",
+                      "children": [
+                        {
+                          "name": "Beans",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Chickpea",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Green Bean",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Lentil",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Lima Beans",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Pea",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Peanut",
+                          "culinary": "other"
+                        },
+                        {
+                          "name": "Soybean",
+                          "culinary": "vegetable"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Vanilla",
+					  "color": "#f3e5ab",
+                      "culinary": "other"
+                    }
+                  ]
+                },
+                {
+                  "name": "Indehiscent Dry Fruits",
+                  "color": "#dcac42",
+                  "children": [
+                    {
+                      "name": "Grain",
+                      "color": "#dcc542",
+                      "children": [
+                        {
+                          "name": "Barley",
+                          "culinary": "other"
+                        },
+                        {
+                          "name": "Corn",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Oats",
+                          "culinary": "other"
+                        },
+                        {
+                          "name": "Quinoa",
+                          "culinary": "other"
+                        },
+                        {
+                          "name": "Rice",
+                          "culinary": "other"
+                        },
+                        {
+                          "name": "Rye",
+                          "culinary": "other"
+                        },
+                        {
+                          "name": "Wheat",
+                          "culinary": "other"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Nuts",
+                      "color": "#bf6d20",
+                      "children": [
+                        {
+                          "name": "Chestnut",
+                          "culinary": "other"
+                        },
+                        {
+                          "name": "Hazelnut",
+                          "culinary": "other"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Fleshy Fruits",
+              "color": "#850644",
+              "children": [
+                {
+                  "name": "Berries",
+                  "color": "#773092",
+                  "children": [
+                    {
+                      "name": "Avocado",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Banana",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Blueberries",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Citrus",
+                      "color": "#d2da41",
+                      "children": [
+                        {
+                          "name": "Grapefruit",
+                          "culinary": "fruit"
+                        },
+                        {
+                          "name": "Kumquat",
+                          "culinary": "fruit"
+                        },
+                        {
+                          "name": "Lemon",
+                          "culinary": "fruit"
+                        },
+                        {
+                          "name": "Lime",
+                          "culinary": "fruit"
+                        },
+                        {
+                          "name": "Orange",
+                          "culinary": "fruit"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Cranberries",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Currant",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Dragon Fruit",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Eggplant",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Grapes",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Guava",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Kiwi",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Mangosteen",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Passion Fruit",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Pepo",
+                      "color": "#95cb3d",
+                      "children": [
+                        {
+                          "name": "Cantaloupe",
+                          "culinary": "fruit"
+                        },
+                        {
+                          "name": "Cucumber",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Gourd",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Honeydew",
+                          "culinary": "fruit"
+                        },
+                        {
+                          "name": "Pumpkin",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Papaya",
+                          "culinary": "fruit"
+                        },
+                        {
+                          "name": "Watermelon",
+                          "culinary": "fruit"
+                        },
+                        {
+                          "name": "Zucchini",
+                          "culinary": "vegetable"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Peppers",
+                      "color": "#b63675",
+                      "children": [
+                        {
+                          "name": "Bell Pepper",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Chili Pepper",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Jalapeno Pepper",
+                          "culinary": "vegetable"
+                        },
+                        {
+                          "name": "Sweet Pepper",
+                          "culinary": "vegetable"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Pomegranate",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Star Fruit",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Tomato",
+                      "culinary": "vegetable"
+                    }
+                  ]
+                },
+                {
+                  "name": "Drupes",
+                  "color": "#dc8d42",
+                  "children": [
+                    {
+                      "name": "Almond",
+                      "culinary": "other"
+                    },
+                    {
+                      "name": "Apricot",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Cashew",
+                      "culinary": "other"
+                    },
+                    {
+                      "name": "Cherry",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Coconut",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Coffee",
+                      "culinary": "other"
+                    },
+                    {
+                      "name": "Date",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Lychee",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Macadamia Nut",
+                      "culinary": "other"
+                    },
+                    {
+                      "name": "Mango",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Nectarine",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Olive",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Pecan",
+                      "culinary": "other"
+                    },
+                    {
+                      "name": "Peach",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Pistachio",
+                      "culinary": "other"
+                    },
+                    {
+                      "name": "Plum",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Prune",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Walnut",
+                      "culinary": "other"
+                    }
+                  ]
+                },
+                {
+                  "name": "Durian",
+                  "culinary": "fruit"
+                },
+                {
+                  "name": "Poms",
+                  "color": "#dc5142",
+                  "children": [
+                    {
+                      "name": "Apple",
+                      "culinary": "fruit"
+                    },
+                    {
+                      "name": "Pear",
+                      "culinary": "fruit"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Multiple Fruits",
+          "color": "#e78f3c",
+          "children": [
+            {
+              "name": "Fig",
+              "culinary": "fruit"
+            },
+            {
+              "name": "Mulberry",
+              "culinary": "fruit"
+            },
+            {
+              "name": "Pineapple",
+              "culinary": "fruit"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vegetables",
+      "color": "#2ecc71",
+      "children": [
+        {
+          "name": "Flowers",
+          "color": "#99ef36",
+          "children": [
+            {
+              "name": "Artichoke",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Asparagus",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Cruciferous",
+              "color": "#427a00",
+              "children": [
+                {
+                  "name": "Broccoli",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Cauliflower",
+                  "culinary": "vegetable"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Leafy",
+          "color": "#009943",
+          "children": [
+            {
+              "name": "Cruciferous",
+              "color": "#427a00",
+              "children": [
+                {
+                  "name": "Arugula",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Bok Choi",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Brussell Sprouts",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Cabbage",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Collard Greens",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Kale",
+                  "culinary": "vegetable"
+                }
+              ]
+            },
+            {
+              "name": "Chard",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Spinach",
+              "culinary": "vegetable"
+            }
+          ]
+        },
+        {
+          "name": "Roots",
+          "color": "#9ce943",
+          "children": [
+            {
+              "name": "Modified Plant Stems",
+              "color": "#7ee6ab",
+              "children": [
+                {
+                  "name": "Rhizomes",
+                  "color": "#ffab4a",
+                  "children": [
+                    {
+                      "name": "Ginger",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Tumeric",
+                      "culinary": "vegetable"
+                    }
+                  ]
+                },
+                {
+                  "name": "Tubers",
+                  "color": "#f274b0",
+                  "children": [
+                    {
+                      "name": "Potato",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Yam",
+                      "culinary": "vegetable"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Taproot",
+              "color": "#d7ef1f",
+              "children": [
+                {
+                  "name": "Beet",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Cruciferous",
+                  "color": "#427a00",
+                  "children": [
+                    {
+                      "name": "Horseradish",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Radish",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Rutabaga",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Turnip",
+                      "culinary": "vegetable"
+                    },
+                    {
+                      "name": "Wasabi",
+                      "culinary": "vegetable"
+                    }
+                  ]
+                },
+                {
+                  "name": "Carrot",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Parsnip",
+                  "culinary": "vegetable"
+                }
+              ]
+            },
+            {
+              "name": "Sweet Potato",
+              "color": "#facb55",
+              "culinary": "vegetable"
+            }
+          ]
+        },
+        {
+          "name": "Sea Vegetables",
+          "color": "#3290be",
+          "children": [
+            {
+              "name": "Seaweed",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Watercress",
+              "color": "#427a00",
+              "culinary": "vegetable"
+            }
+          ]
+        },
+        {
+          "name": "Seeds",
+          "color": "#065d88",
+          "children": [
+            {
+              "name": "Chocolate",
+              "culinary": "other"
+            },
+            {
+              "name": "Fennel",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Mustard",
+              "color": "#427a00",
+              "culinary": "other"
+            },
+            {
+              "name": "Okra",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Sunflower Seeds",
+              "culinary": "other"
+            }
+          ]
+        },
+        {
+          "name": "Stems",
+          "color": "#68c300",
+          "children": [
+            {
+              "name": "Bulbs",
+              "children": [
+                {
+                  "name": "Kohlrabi",
+                  "color": "#427a00",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Garlic",
+                  "culinary": "vegetable"
+                },
+                {
+                  "name": "Onion",
+                  "culinary": "vegetable"
+                }
+              ]
+            },
+            {
+              "name": "Chives",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Celery",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Leek",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Rhubarb",
+              "culinary": "vegetable"
+            },
+            {
+              "name": "Sugar Cane",
+              "culinary": "other"
+            }
+          ]
+        },
+        {
+          "name": "Mushrooms",
+          "culinary": "vegetable"
+        }
+      ]
+    }
+  ]
+}
